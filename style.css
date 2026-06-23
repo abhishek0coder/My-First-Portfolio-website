@@ -1,0 +1,378 @@
+/* बेसिक सेटिंग - मार्जिन और पैडिंग हटाने के लिए */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+/* हेडर की स्टाइलिंग (फ्लेक्सबॉक्स का इस्तेमाल किया है) */
+#main-header {
+  background-color: #2c3e50; /* डार्क ब्लू बैकग्राउंड */
+  display: flex;
+  justify-content: space-between; /* लोगो लेफ्ट में और मेनू राइट में रहेगा */
+  align-items: center;
+  padding: 15px 5%;
+  position: sticky; /* स्क्रॉल करने पर भी टॉप पर टिका रहेगा */
+  top: 0;
+  z-index: 100;
+}
+
+/* लोगो की स्टाइलिंग */
+.logo {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* नवबार के अंदर की लिस्ट की स्टाइलिंग */
+#main-nav ul {
+  display: flex;
+  list-style: none; /* बुलेट पॉइंट्स हटाने के लिए */
+}
+
+#main-nav ul li {
+  margin-left: 20px;
+  display: flex;
+  justify-content: end;
+
+}
+
+.bi-list-nested {
+  display: none;
+  color: #cbd5e1;
+  font-size: 26px;
+  vertical-align: middle;
+  margin-left: 20px;
+  
+}
+
+.ul-log {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+/* --- 📱 मोबाइल स्क्रीन के लिए रिस्पॉन्सिव सेटिंग --- */
+/* --- 📱 मोबाइल स्क्रीन के लिए परफेक्ट रिस्पॉन्सिव सेटिंग --- */
+@media (max-width: 789px) {
+
+  /* 1. मोबाइल पर लिस्ट के नाम (Home, About...) छुपे रहेंगे */
+  #main-nav ul li {
+    display: none;
+  }
+
+  /* 2. मोबाइल पर प्रोफाइल इमेज भी सामान्य रूप से छुपी रहेगी */
+  #main-nav ul .ul-log {
+    display: none;
+  }
+
+  /* 3. मोबाइल वाले तीन लाइनों के आइकन को दिखाओ */
+  .bi-list-nested {
+    display: flex !important;
+    cursor: pointer;
+  }
+
+  /* 4. 💡 जब मेनू खुलेगा (Active होगा) तब का जादुई लेआउट */
+  #main-nav ul.active {
+    display: flex !important;
+    flex-direction: column !important; /* चीजें ऊपर से नीचे एक लाइन में आएंगी */
+    align-items: center !important;    /* सब कुछ बीच में रहेगा */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #2c3e50;
+    padding: 20px 0;
+    z-index: 99;
+    border-top: 1px solid #34495e;
+  }
+
+  /* 5. एक्टिव मेनू के अंदर लिंक्स को दिखाना */
+  #main-nav ul.active li {
+    display: block !important;
+    text-align: center;
+    margin: 12px 0;
+    order: 2; /* लिंक्स को नीचे रखने के लिए */
+  }
+
+  /* 6. 🎯 [सबसे ज़रूरी बदलाव]: एक्टिव मेनू में इमेज को सबसे ऊपर फिक्स करना */
+  #main-nav ul.active .ul-log {
+    display: block !important;
+    order: 1 !important;        /* order: 1 की वजह से यह लिस्ट में सबसे पहले नंबर पर आ जाएगी */
+    margin-bottom: 20px;       /* नीचे के Home, About बटन से दूरी */
+    height: 55px;              /* मोबाइल मेनू में थोड़ी बड़ी और साफ़ दिखेगी */
+    width: 55px;
+    border: 2px solid #3498db;  /* आपके पसंदीदा ग्लो जैसा सुंदर बॉर्डर */
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+  }
+
+}
+
+
+
+
+/* --- 📱 मोबाइल स्क्रीन के लिए रिस्पॉन्सिव सेटिंग (यहाँ बदलाव करें) --- */
+@media (max-width: 789px) {
+
+  /* 1. मोबाइल पर सामान्य रूप से लिस्ट के नाम (Home, About...) छुपे रहेंगे */
+  #main-nav ul li {
+    display: none;
+  }
+
+  /* 2. मोबाइल आइकन को दिखाओ और कर्सर पॉइंटर करो */
+  .bi-list-nested {
+    display: flex !important; /* यह पक्का करेगा कि आइकन दिखे */
+    cursor: pointer;
+  }
+
+
+
+  /* 3. 💡 जब जावास्क्रिप्ट 'active' क्लास जोड़ेगी, तब मेनू नीचे खुलेगा */
+  #main-nav ul.active {
+    display: flex;
+    flex-direction: column;   /* नाम ऊपर से नीचे एक लाइन में आएंगे */
+    position: absolute;
+    top: 100%;               /* हेडर के ठीक नीचे */
+    left: 0;
+    width: 100%;
+    background-color: #2c3e50; /* हेडर वाला सेम कलर */
+    padding: 20px 0;
+    z-index: 99;
+    border-top: 1px solid #34495e;
+  }
+
+  /* 4. एक्टिव मेनू के अंदर के सभी li को मोबाइल पर दिखाने के लिए */
+  #main-nav ul.active li {
+    display: block;
+    text-align: center;
+    margin: 15px 0;          /* बटन्स के बीच का गैप */
+  }
+
+}
+
+
+/* लिंक्स (Buttons) की स्टाइलिंग */
+#main-nav ul li a {
+  color: #cbd5e1;
+  text-decoration: none; /* अंडरलाइन हटाने के लिए */
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease; /* स्मूथ इफेक्ट के लिए */
+}
+
+/* माउस ले जाने पर (Hover Effect) और एक्टिव पेज के लिए */
+#main-nav ul li a:hover, 
+#main-nav ul li a.active {
+  color: #ffffff;
+  background-color: #34495e; /* थोड़ा हल्का बैकग्राउंड */
+}
+
+
+main {
+  max-width: 1200px; /* कंप्यूटर स्क्रीन पर कंटेंट को बीच में रखने के लिए */
+  margin: 0 auto;    /* लेफ्ट-राइट से बराबर जगह छोड़ने के लिए */
+  padding: 40px 20px; /* ऊपर और नीचे से गैप देने के लिए */
+  min-height: 80vh; /* यह पक्का करेगा कि आपका फुटर हमेशा नीचे रहे */
+}
+
+/* --- 🖥️ कंप्यूटर स्क्रीन के लिए हीरो सेक्शन --- */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70vh; /* हेडर के बाद बची जगह को कवर करने के लिए */
+  gap: 40px; /* टेक्स्ट और इमेज के बीच की दूरी */
+}
+
+/* लेफ्ट साइड का टेक्स्ट एरिया */
+.hero-content {
+  flex: 1; /* यह बराबर जगह घेरेगा */
+}
+
+/* --- 🏪 सिर्फ आइकॉन पर हमेशा चलने वाला Cinematic Light Effect --- */
+
+.hero-content i.bi-shop {
+  font-size: 4rem; /* आइकॉन का साइज़ बड़ा करने के लिए */
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px; /* नीचे के टेक्स्ट से थोड़ी दूरी */
+  
+  /* 1. आइकॉन के अंदर वीडियो जैसा लाइट ग्रेडिएंट भरना */
+  background: linear-gradient(
+    to right, 
+    #1b2631 20%,  /* डार्क */
+    #3498db 40%,  /* स्काई ब्लू लाइट */
+    #ffffff 60%,  /* सफ़ेद तीखी लाइट */
+    #3498db 80%,  /* ब्लू लाइट */
+    #1b2631 100%  /* डार्क */
+  );
+  background-size: 200% auto;
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* असली रंग गायब ताकि पीछे का लाइट ग्रेडिएंट दिखे */
+  
+  /* ⚡ बिना होवर किए हमेशा चलने वाला एनिमेशन (3 सेकंड की स्मूथ स्पीड पर) */
+  animation: iconShineReveal 3s linear infinite; 
+  
+  /* ✨ आइकॉन के चारों तरफ हल्का सा नियॉन ग्लो */
+  filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.4));
+  transition: all 0.4s ease;
+}
+
+/* 🟢 जब कोई इस आइकॉन पर माउस ले जाए (Optional Hover) */
+.hero-content i.bi-shop:hover {
+  transform: scale(1.1) rotate(5deg); /* हल्का सा बड़ा होगा और घूमेगा */
+  filter: drop-shadow(0 0 15px #3498db); /* होवर पर ग्लो बढ़ जाएगा */
+}
+
+/* 🎞️ लाइट मूव करने का बैकग्राउंड एनिमेशन */
+@keyframes iconShineReveal {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.hero-content h1 .highlight {
+  color: #3498db; /* आपके नाम का रंग स्काई ब्लू */
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* बटन की स्टाइलिंग */
+.btn {
+  display: inline-block;
+  background-color: #3498db;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+/* 🖼️ राइट साइड का इमेज एरिया (सबसे महत्वपूर्ण पार्ट) */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* इमेज को सेंटर में रखने के लिए */
+}
+
+.hero-image img {
+  max-width: 100%; /* इमेज अपने डिब्बे से बाहर नहीं भागेगी */
+  height: auto;
+  border-radius: 50%; /* अगर इमेज को गोल (Circle) दिखाना चाहते हैं */
+  border: 5px solid #34495e; /* इमेज के चारों तरफ एक सुंदर बॉर्डर */
+  box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3); /* हल्का सा ग्लोइंग इफेक्ट */
+  width: 350px; /* आप अपनी पसंद के हिसाब से साइज़ बदल सकते हैं */
+  object-fit: cover;
+}
+
+/* --- 📱 मोबाइल स्क्रीन के लिए रिस्पॉन्सिव सेटिंग --- */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    flex-direction: column-reverse; /* मोबाइल पर इमेज ऊपर और टेक्स्ट नीचे आ जाएगा */
+    text-align: center; /* सारा टेक्स्ट सेंटर में हो जाएगा */
+    padding-top: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem; /* मोबाइल पर टेक्स्ट का साइज थोड़ा छोटा */
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-image img {
+    width: 250px; /* मोबाइल पर इमेज थोड़ी छोटी हो जाएगी ताकि स्क्रीन में फिट आए */
+  }
+}
+
+
+/* --- 🖥️ फुटर की स्टाइलिंग --- */
+#main-footer {
+  background-color: #2c3e50; /* हेडर वाला सेम डार्क ब्लू कलर */
+  color: #cbd5e1;            /* हल्का ग्रे रंग टेक्स्ट के लिए */
+  padding: 20px 5%;
+  margin-top: 40px;          /* मुख्य कंटेंट से थोड़ी दूरी बनाने के लिए */
+  border-top: 3px solid #3498db; /* ऊपर एक पतली सुंदर नीली लाइन */
+}
+
+/* कंटेंट को एक लाइन में सेट करने के लिए फ्लेक्सबॉक्स */
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* टेक्स्ट लेफ्ट में, आइकन्स राइट में */
+  align-items: center;
+  max-width: 1200px;             /* main टैग जितनी ही चौड़ाई */
+  margin: 0 auto;
+}
+
+.footer-content p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+/* सोशल मीडिया लिंक्स का डिब्बा */
+.social-links a {
+  color: #cbd5e1;
+  font-size: 20px;          /* आइकन्स का साइज */
+  margin-left: 15px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* 🟢 माउस ले जाने पर आइकन्स का रंग बदलेगा और वे थोड़े ऊपर उठेंगे */
+.social-links a:hover {
+  color: #3498db;           /* स्काई ब्लू रंग */
+  transform: translateY(-3px); /* थोड़ा ऊपर उठने का इफेक्ट */
+  display: inline-block;    /* ट्रांसफॉर्म काम करे इसलिए ज़रूरी है */
+}
+
+/* --- 📱 मोबाइल स्क्रीन के लिए फुटर (Media Query) --- */
+@media screen and (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* मोबाइल पर पहले टेक्स्ट फिर उसके नीचे आइकन्स आएंगे */
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .social-links a {
+    margin: 0 10px;        /* मोबाइल पर आइकन्स के बीच बराबर गैप */
+  }
+}
