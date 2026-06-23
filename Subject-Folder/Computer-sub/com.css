@@ -1,0 +1,200 @@
+/* बेसिक सेटिंग - मार्जिन और पैडिंग हटाने के लिए */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+.nav-browser-btn {
+    position: fixed;
+    top: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000; /* Taaki button sabse upar dikhe */
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-browser-btn:hover {
+    background-color: #555;
+}
+
+/* Left button ko left kone me rakhne ke liye */
+.btn-left {
+    left: 20px;
+}
+
+.btn-left:hover {
+    transform: translateX(-3px); /* Hover par thoda left khiske ga */
+}
+
+/* Right button ko right kone me rakhne ke liye */
+.btn-right {
+    right: 20px;
+}
+
+.btn-right:hover {
+    transform: translateX(3px); /* Hover par thoda right khiske ga */
+}
+
+/* --- 🚀 Projects Page Styling --- */
+
+.projects-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+/* --- 🎬 वीडियो जैसा Cinematic Light Reveal Effect --- */
+
+.page-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; 
+}
+
+/* 🌟 आइकॉन और Subjects टेक्स्ट दोनों पर जादुई सेटिंग */
+.page-title i,
+.page-title .highlight {
+  position: relative;
+  display: inline-block;
+  
+  background: linear-gradient(
+    to right, 
+    #1b2631 20%,  
+    #3498db 40%,  
+    #ffffff 60%,  
+    #3498db 80%,  
+    #1b2631 100%  
+  );
+  background-size: 200% auto;
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  
+  transition: all 0.5s ease;
+
+  /* ⚡ [बदलाव यहाँ है]: एनिमेशन अब बिना होवर के हमेशा चलेगा */
+  animation: shineReveal 3s linear infinite; 
+  
+  /* ✨ हमेशा हल्का ग्लो रखने के लिए (Optional) */
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+/* 🟢 अब होवर करने पर केवल टेक्स्ट थोड़ा बड़ा (Zoom) होगा */
+.page-title:hover i,
+.page-title:hover .highlight {
+  transform: scale(1.05); 
+  text-shadow: 0 0 15px rgba(52, 152, 219, 0.6); /* होवर पर ग्लो थोड़ा बढ़ जाएगा */
+}
+
+/* 🎞️ एनिमेशन लॉजिक (सेम रहेगा) */
+@keyframes shineReveal {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.page-subtitle {
+  color: #94a3b8;
+  margin-bottom: 40px;
+}
+
+/* Grid Layout */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px; /* Cards ke beech ka gap */
+  text-align: left;
+}
+
+/* Pura Project Item (Card + Niche ka Text) */
+.project-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 📁 Project Card (Same aapke skill-card jaisa logic) */
+.project-card {
+  background-color: #2c3e50;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #34495e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: #3498db;
+}
+
+/* 🖼️ Card ke andar ki Image Style */
+.project-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px; /* Image ke kesh rounded karne ke liye */
+}
+
+.project-card h3 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin: 5px 0;
+}
+
+/* 📝 Card ke niche ka Paragraph Style */
+.project-desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 15px; /* Card se thodi doori */
+  padding: 0 5px;
+}
+
+/* 🌟 Glowing Button Style */
+.glow-btn {
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #2c3e50;
+  border: 2px solid #3498db;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+.glow-btn:hover {
+  background: #3498db;
+  box-shadow: 0 0 15px #3498db;
+}
