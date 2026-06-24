@@ -22,7 +22,8 @@ body {
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
-    z-index: 1000; /* Taaki button sabse upar dikhe */
+    z-index: 9999; /* इसे बढ़ाकर 9999 कर दिया */
+    pointer-events: auto; /* यह सुनिश्चित करेगा कि क्लिक काम करे */
     transition: background 0.2s, transform 0.2s;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
